@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+</head>
+
+<style>
+    #GameBtn {
+        margin-left: 25%;
+        margin-top: 50%;
+    }
+
+    #namelabel {
+        margin-top: 20%;
+    }
+
+    #subBtn {
+        margin-left: 40%;
+    }
+
+    #TryBtn {
+        margin-left: 40%;
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="" id="form1" style="display: none;">
+                    <div class="form-group">
+                        <label for="name" id="namelabel">Apna Name Likkhein</label>
+                        <input type="text" class="form-control" placeholder="Name" id="name">
+                    </div>
+                    <h4 id="personname" class="text-center"></h4>
+                    <div class="form-group" style="display: none;" id="dq1">
+                        <label for="q1">Q1: kia nawaz shareef pakistaan waps aaiga ?</label>
+                        <input type="text" class="form-control" placeholder="Answer Here" id="q1">
+                        <span id="response1"></span>
+                    </div>
+                    <div class="form-group" style="display: none;" id="dq2">
+                        <label for="q2">Q2: dunea ki sab se ziada abadi wala mulk konsa hai ?</label>
+                        <input type="text" class="form-control" placeholder="Answer Here" id="q2">
+                        <span id="response2"></span>
+                    </div>
+                    <div class="form-group" style="display: none;" id="dq3">
+                        <label for="q3">Q3: dunya ki sb se bhadur qoum kon si hai ?</label>
+                        <input type="text" class="form-control" placeholder="Answer Here" id="q3">
+                        <span id="response3"></span>
+                    </div>
+                    <div class="form-group" style="display: none;" id="dq4">
+                        <label for="q4">Q4: dunya ka sab se bara brre aazam kon sa hai ?</label>
+                        <input type="text" class="form-control" placeholder="Answer Here" id="q4">
+                        <span id="response4"></span>
+                    </div>
+                    <div class="form-group" style="display: none;" id="dq5">
+                        <label for="q5">Q5: dunya ka sb se kam abadi wala mulk kon sa hai ?</label>
+                        <input type="text" class="form-control" placeholder="Answer Here" id="q5">
+                        <span id="response5"></span>
+                    </div>
+                    <button class="btn btn-primary" id="subBtn">submit</button>
+                </form>
+                <button class="btn btn-primary" id="GameBtn">Game Start</button>
+                <button class="btn btn-primary " style="display: none;" id="TryBtn">Try again</button>
+            </div>
+        </div>
+    </div>
+
+    <h2 id="marks"></h2>
+    <h2 id="A0"></h2>
+    <ul id="answers" style="list-style: decimal;">
+
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+            $("#GameBtn").click(function () {
+                $("#form1").show();
+                $("#GameBtn").hide();
+            })
+
+            var trueans1 = "nahi"
+            var trueans2 = "china"
+            var trueans3 = "pakhtoon"
+            var trueans4 = "asia"
+            var trueans5 = "nevada"
+            var marks = 0;
+
+            $("#subBtn").click(function (e) {
+                e.preventDefault();
+                var Name = $("#name").val();
+                if (Name != "") {
+                    $("#name").attr("readonly", true)
+                    $("#personname").html("Hello " + Name);
+                    $("#dq1").show();
+                } else {
+                    alert("Pehle apna naam likh");
+                }
+            })
+
+            $("#subBtn").click(function (e) {
+                e.preventDefault();
+                var q1 = $("#q1").val();
+                if (q1 != "") {
+                    $("#dq2").show();
+                    if (q1 == trueans1) {
+                        $("#response1").html("correct").addClass("text-success")
+                        if ($("#q1").attr("readonly") == undefined) {
+                            marks += 1
+                        }
+                    } else {
+                        $("#response1").html("wrong").addClass("text-danger")
+                    }
+                    $("#q1").attr("readonly", true)
+                }
+            })
+
+            $("#subBtn").click(function (e) {
+                e.preventDefault();
+                var q2 = $("#q2").val();
+                if (q2 != "") {
+                    $("#dq3").show();
+                    if (q2 == trueans2) {
+                        $("#response2").html("correct").addClass("text-success")
+                        if ($("#q2").attr("readonly") == undefined) {
+                            marks += 1
+                        }
+
+                    } else {
+                        $("#response2").html("wrong").addClass("text-danger")
+                    }
+                    $("#q2").attr("readonly", true)
+                }
+            })
+
+            $("#subBtn").click(function (e) {
+                e.preventDefault();
+                var q3 = $("#q3").val();
+                if (q3 != "") {
+                    $("#dq4").show();
+                    if (q3 == trueans3) {
+                        $("#response3").html("correct").addClass("text-success")
+                        if ($("#q3").attr("readonly") == undefined) {
+                            marks += 1
+                        }
+
+                    } else {
+                        $("#response3").html("wrong").addClass("text-danger")
+                    }
+                    $("#q3").attr("readonly", true)
+                }
+            })
+
+            $("#subBtn").click(function (e) {
+                e.preventDefault();
+                var q4 = $("#q4").val();
+                if (q4 != "") {
+                    $("#dq5").show();
+                    if (q4 == trueans4) {
+                        $("#response4").html("correct").addClass("text-success")
+                        if ($("#q4").attr("readonly") == undefined) {
+                            marks += 1
+                        }
+
+                    } else {
+                        $("#response4").html("wrong").addClass("text-danger")
+                    }
+                    $("#q4").attr("readonly", true)
+                }
+            })
+
+            $("#subBtn").click(function (e) {
+                e.preventDefault();
+
+                var q5 = $("#q5").val();
+
+
+                if (q5 != "") {
+                    if (q5 == trueans5) {
+                        $("#response5").html("correct").addClass("text-success")
+                        if ($("#q5").attr("readonly") == undefined) {
+                            marks += 1
+                        }
+
+                    } else {
+                        $("#response5").html("wrong").addClass("text-danger")
+                    }
+                    $("#subBtn").hide();
+                    $("#TryBtn").show();
+                    $("#form1").hide();
+
+                    $("#q5").attr("readonly", true)
+                    $("#marks").html("Obtain marks out of 5 = " + marks)
+                    $("#A0").html("Correct Answers")
+                    $("#answers").append(`
+                        <li>${trueans1}</li>
+                        <li>${trueans2}</li>
+                        <li>${trueans3}</li>
+                        <li>${trueans4}</li>
+                        <li>${trueans5}</li>
+                    `)
+                }
+            })
+
+            $("#TryBtn").click(function ( ) {
+                location.reload();
+
+            })
+        })
+    </script>
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
